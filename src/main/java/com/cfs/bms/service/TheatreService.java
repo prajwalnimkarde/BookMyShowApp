@@ -47,8 +47,9 @@ public class TheatreService {
                 .collect(Collectors.toList());
     }
 
-    public TheatreDto updateTheatre(String name, TheatreDto theatreDto) {
-        Theatre theatre = theatreRepository.findByName(name);
+    public TheatreDto updateTheatre(TheatreDto theatreDto) {
+        Theatre theatre = theatreRepository.findById(theatreDto.getId())
+                .orElseThrow(() -> new ResourceNotFoundException("Theatre not found with id: "+theatreDto.getId()));
 
         theatre.setName(theatreDto.getName());
         theatre.setAddress(theatreDto.getAddress());
