@@ -59,7 +59,7 @@ public class MovieService {
 
     @Transactional
     public List<MovieDto> getMoviesByTitle(String title){
-        List<Movie> movies = movieRepository.findByTitleContaining(title);
+        List<Movie> movies = movieRepository.findByTitle(title);
         return movies.stream()
                 .map(this::mapToDto)
                 .collect(Collectors.toList());
