@@ -16,7 +16,7 @@ public class MoviesController {
     @Autowired
     private MovieService movieService;
 
-    @PostMapping
+    @PostMapping("/new")
     public ResponseEntity<MovieDto> createMovie(@RequestBody MovieDto movieDto){
         return new ResponseEntity<>(movieService.createMovie(movieDto), HttpStatus.CREATED);
     }
